@@ -3,9 +3,14 @@ const express = require('express');
 const cors = require('cors');
 const router =require('./Routes/router')
 require('./config/connection')
+
+
 const sbServer = express()
+
+
 sbServer.use(cors());
 sbServer.use(express.json());
+sbServer.use('/uploads',express.static('./uploads'))
 sbServer.use(router)
 
 
