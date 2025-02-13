@@ -54,4 +54,17 @@ exports.loginController=async(req,res)=>{
 }
 
 // profile updation
- 
+ exports.editUserController = async(req,res)=>{
+    console.log("Inside editUserController ");
+    // getting user from jwtmiddleware
+    const  userId = req.userId
+    const {username,email,password,profilePic}=req.body
+    const uploadProfileImgFile = req.file?req.file.filename:profilePic
+    try {
+        const updatedUser = await users.findByIdAndUpdate({_id:userId}, {username,email,password,profilePic:uploadProfileImgFile},{new:true})
+        await updatedUser.save()
+        res.status(200).json(updatedUser)
+    } catch (err) {
+        res.status(401).json(err)
+    }
+ }

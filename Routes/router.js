@@ -36,6 +36,8 @@ router.put('/blog/:id/edit',jwtMiddleware,multerMiddleware.single("blogImage"), 
 // editBlog
 router.delete('/delete-blog/:id',jwtMiddleware , blogController.deleteBlogController)
 
+// editUser
+router.put('/user/edit',jwtMiddleware,multerMiddleware.single("profilePic"),userController.editUserController)
 
 
 
