@@ -34,7 +34,7 @@ exports.addBlogController = async (req, res) => {
 exports.getHomeBlogController = async (req, res) => {
     console.log("Inside getHomeBlogController");
     try {
-        const allHomeBlogs = await blogs.find().limit(6)
+        const allHomeBlogs = await blogs.find().limit(8)
         res.status(200).json(allHomeBlogs)
 
     } catch (err) {
@@ -132,3 +132,6 @@ exports.deleteBlogController = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+
+
